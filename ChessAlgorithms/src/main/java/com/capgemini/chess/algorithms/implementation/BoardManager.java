@@ -13,6 +13,8 @@ import com.capgemini.chess.algorithms.data.enums.PieceType;
 import com.capgemini.chess.algorithms.data.generated.Board;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
 import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckException;
+import com.capgemini.chess.algorithms.validator.CoordinateValidator;
+import com.capgemini.chess.algorithms.validator.FieldValidator;
 
 /**
  * Class for managing of basic operations on the Chess Board.
@@ -23,6 +25,8 @@ import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckExcep
 public class BoardManager {
 
 	private Board board = new Board();
+	private CoordinateValidator coordinateValidator = new CoordinateValidator();
+	private FieldValidator fieldValidator = new FieldValidator();
 
 	public BoardManager() {
 		initBoard();
@@ -234,6 +238,16 @@ public class BoardManager {
 	private Move validateMove(Coordinate from, Coordinate to) throws InvalidMoveException, KingInCheckException {
 
 		// TODO please add implementation here
+		
+		coordinateValidator.validateCoordinate(from);
+		coordinateValidator.validateCoordinate(to);
+		
+		Piece piece = board.getPieceAt(from);
+		Color nextMoveColor = calculateNextMoveColor();
+		fieldValidator.validateFieldFromEmptiness(piece, nextMoveColor ); 
+		
+		
+		
 		return null;
 	}
 

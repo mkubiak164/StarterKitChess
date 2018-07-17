@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/capgemini/chess/algorithms/validator/FieldValidator.java=UTF-8
+encoding//src/main/java/com/capgemini/chess/algorithms/validator/moves/KnightValidator.java=UTF-8
+encoding//src/main/java/com/capgemini/chess/algorithms/validator/moves/PawnValidator.java=UTF-8
+encoding//src/main/java/com/capgemini/chess/algorithms/validator/moves/RookValidator.java=UTF-8
