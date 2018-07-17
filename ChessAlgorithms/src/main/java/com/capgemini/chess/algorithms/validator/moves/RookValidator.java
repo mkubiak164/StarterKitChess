@@ -1,32 +1,38 @@
 package com.capgemini.chess.algorithms.validator.moves;
 
 import com.capgemini.chess.algorithms.data.Coordinate;
-import com.capgemini.chess.algorithms.data.enums.Color;
 import com.capgemini.chess.algorithms.data.enums.Piece;
 import com.capgemini.chess.algorithms.data.generated.Board;
-import com.capgemini.chess.algorithms.implementation.*;
-import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
+import com.capgemini.chess.algorithms.implementation.exceptions.*;
 
 public class RookValidator implements MoveValidator {
-
+	
+	private Board board;
+	
+	public RookValidator(Board board) {
+		this.board = board;
+	}
+	
 	
 	// wieza
 	
 	@Override
-	public void validatePieceMove(Coordinate from, Coordinate to) throws InvalidMoveException {
+	public void validatePieceMove(Coordinate from, Coordinate to) 
+			throws InvalidRookMoveException {
 		
 		int xFrom = from.getX();
 		int yFrom = from.getY();
-		int xTo = from.getX();
-		int yTo = from.getY();
+		int xTo = to.getX();
+		int yTo = to.getY();
 		
 		if (xFrom != xTo || yFrom != yTo) {
-			throw new InvalidMoveException();
+			throw new InvalidRookMoveException();
 		}	
 	}
 
 	@Override
-	public void validateIfSthIsOnTheWayTo(Coordinate from, Coordinate to) throws InvalidMoveException {
+	public void validateIfSthIsOnTheWayTo(Coordinate from, Coordinate to) 
+			throws InvalidRookMoveException {
 		
 		int xFrom = from.getX();
 		int yFrom = from.getY();
@@ -36,44 +42,30 @@ public class RookValidator implements MoveValidator {
 		int difX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
 		int difY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));
 		
-		
 		if (difX != 0 && difY == 0) {
 			if (xFrom < xTo) {
-				for(int i=xFrom+1; i<=xTo; i++) {
+				for(int i=xFrom+1; i<xTo; i++) {
 					
-					Coordinate aC = new Coordinate(i, yFrom);
-					Board 
-					Piece actPiece = getPieceAt(aC);
+					Coordinate actualCoordinate = new Coordinate(i, yFrom);
+					Piece fromPiece = board.getPieceAt(from);
+					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					
-					
-					if (actPiece != null && actPiece.getColor() != ) {
-						throw new InvalidMoveException();
-						break;
+					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+						throw new InvalidRookMoveException();
 					}
-					
-				/*	public Board getBoard() {
-						return this.board;
-						*/
-						
-					/*private Piece[][] pieces = new Piece[SIZE][SIZE];
-					 * 
-					 * public Piece[][] getPieces() {
-						return pieces;
-					}*/
-					
-					
-					/*public Piece getPieceAt(Coordinate coordinate) {
-						return pieces[coordinate.getX()][coordinate.getY()];
-					}*/
-								
 				}
 			}
 			else {
 				for(int i=xFrom-1; i<=xTo; i--) {
 					
-			// TODO napisać co dalej		
+					Coordinate actualCoordinate = new Coordinate(i, yFrom);
 					
+					Piece fromPiece = board.getPieceAt(from);
+					Piece actPiece = board.getPieceAt(actualCoordinate);
+					
+					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+						throw new InvalidRookMoveException();
+					}		
 				}
 			}
 		}
@@ -81,14 +73,26 @@ public class RookValidator implements MoveValidator {
 		if (difY != 0 && difX == 0) {
 			if (yFrom < yTo) {
 				for(int i=yFrom+1; i<=yTo; i++) {
-					// TODO
+
+					Coordinate actualCoordinate = new Coordinate(xFrom, i);
+					Piece fromPiece = board.getPieceAt(from);
+					Piece actPiece = board.getPieceAt(actualCoordinate);
+					
+					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+						throw new InvalidRookMoveException();
+					}
 				}
 			}
 			else {
 				for(int i=yFrom-1; i<=yTo; i--) {
 					
-					// TODO napisać co dalej		
-							
+					Coordinate actualCoordinate = new Coordinate(xFrom, i);
+					Piece fromPiece = board.getPieceAt(from);
+					Piece actPiece = board.getPieceAt(actualCoordinate);
+					
+					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+						throw new InvalidRookMoveException();
+					}			
 				}
 			}
 		}

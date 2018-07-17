@@ -1,50 +1,37 @@
 package com.capgemini.chess.algorithms.validator.moves;
 import com.capgemini.chess.algorithms.data.enums.*;
+import com.capgemini.chess.algorithms.data.generated.Board;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
-
-/*enum PieceType {
-	KING,
-    QUEEN,
-    BISHOP,
-    KNIGHT,
-    ROOK,
-    PAWN;
-}
-
-interface MoveValidator {}*/
-
-
-
 
 public class PieceMoveFactory {
 
-	public MoveValidator createPieceValidator (PieceType type) 
+	public MoveValidator createPieceValidator (PieceType type, Board board) 
 			throws InvalidMoveException {
 		
 		switch (type) {
 		
 		case BISHOP: 
-			return new BishopValidator();
+			return new BishopValidator(board);
 
 			
 		case KING:
-			return new KingValidator();
+			return new KingValidator(board);
 	
 			
 		case KNIGHT:
-			return new KnightValidator();
+			return new KnightValidator(board);
 	
 			
 		case PAWN:
-			return new PawnValidator();
+			return new PawnValidator(board);
 
 			
 		case QUEEN:
-			return new QueenValidator();
+			return new QueenValidator(board);
 	
 			
 		case ROOK:
-			return new RookValidator();
+			return new RookValidator(board);
 	
 	
 		default:

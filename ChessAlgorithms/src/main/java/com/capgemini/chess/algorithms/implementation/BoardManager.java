@@ -15,6 +15,8 @@ import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveExcep
 import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckException;
 import com.capgemini.chess.algorithms.validator.CoordinateValidator;
 import com.capgemini.chess.algorithms.validator.FieldValidator;
+import com.capgemini.chess.algorithms.validator.moves.MoveValidator;
+import com.capgemini.chess.algorithms.validator.moves.PieceMoveFactory;
 
 /**
  * Class for managing of basic operations on the Chess Board.
@@ -27,7 +29,8 @@ public class BoardManager {
 	private Board board = new Board();
 	private CoordinateValidator coordinateValidator = new CoordinateValidator();
 	private FieldValidator fieldValidator = new FieldValidator();
-
+	private PieceMoveFactory pieceMoveFactory = new PieceMoveFactory();
+	
 	public BoardManager() {
 		initBoard();
 	}
@@ -235,7 +238,8 @@ public class BoardManager {
 		this.board.setPieceAt(null, lastMove.getTo());
 	}
 
-	private Move validateMove(Coordinate from, Coordinate to) throws InvalidMoveException, KingInCheckException {
+	private Move validateMove(Coordinate from, Coordinate to) 
+			throws InvalidMoveException, KingInCheckException {
 
 		// TODO please add implementation here
 		
@@ -246,6 +250,9 @@ public class BoardManager {
 		Color nextMoveColor = calculateNextMoveColor();
 		fieldValidator.validateFieldFromEmptiness(piece, nextMoveColor ); 
 		
+		MoveValidator moveValidator = pieceMoveFactory.createPieceValidator(piece.getType(), board);
+		moveValidator.validatePieceMove(from, to);
+		moveValidator.validateIfSthIsOnTheWayTo(from, to);
 		
 		
 		return null;
