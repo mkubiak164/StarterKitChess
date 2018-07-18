@@ -1,6 +1,8 @@
 package com.capgemini.chess.algorithms.validator.moves;
 
 import com.capgemini.chess.algorithms.data.Coordinate;
+import com.capgemini.chess.algorithms.data.enums.Color;
+import com.capgemini.chess.algorithms.data.enums.Piece;
 import com.capgemini.chess.algorithms.data.generated.Board;
 import com.capgemini.chess.algorithms.implementation.exceptions.*;
 
@@ -9,6 +11,7 @@ public class PawnValidator implements MoveValidator {
 	// pionek
 	
 	private Board board;
+	
 	
 	public PawnValidator(Board board) {
 		this.board = board;
@@ -25,29 +28,70 @@ public class PawnValidator implements MoveValidator {
 		
 		int difX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
 		int difY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));
+
 		
-		// jezeli tylko y+1, wtedy normalny ruch, jezeli to pierwszy ruch to moze być y+2, 
-		// albo x +/-1 i y+1, wtedy na tym polu musi stac pionek przeciwnika i bedzie to bicie
+		Piece fromPiece = board.getPieceAt(from);
+		Color color = fromPiece.getColor();
 		
-		boolean isThisFirstMove = true;
-		
-		if(isThisFirstMove == false && difX == 2) {
-			throw new InvalidPawnMoveException();
+		if (color == WHITE) {
+			
+			if (yFrom != 1 && difY > 1) {
+				throw new InvalidPawnMoveException();
+			}
+			if (yFrom == 1 && difY > 2) {
+				throw new InvalidPawnMoveException();
+			}
+			if (yFrom > yTo) {
+				throw new InvalidPawnMoveException();
+			}
+			if (difX > 1) {
+				throw new InvalidPawnMoveException();
+			}
 		}
 		
-		if (difY != 0) {
-			throw new InvalidPawnMoveException();
+		if (color == BLACK) {
+			
+			if (yFrom != 6 && difY > 1) {
+				throw new InvalidPawnMoveException();
+			}
+			if (yFrom == 6 && difY > 2) {
+				throw new InvalidPawnMoveException();
+			}
+			if (yFrom < yTo) {
+				throw new InvalidPawnMoveException();
+			}
+			if (difX > 1) {
+				throw new InvalidPawnMoveException();
+			}
 		}
 		
-		if (difX > 2)
-			throw new InvalidPawnMoveException();
 	}
 
 	@Override
 	public void validateIfSthIsOnTheWayTo(Coordinate from, Coordinate to) 
 			throws InvalidPawnMoveException {
 		
+		int xFrom = from.getX();
+		int yFrom = from.getY();
+		int xTo = to.getX();
+		int yTo = to.getY();
 		
+		if (yFrom == 6 && yTo == 4) {
+			Coordinate actualCoordinate = new Coordinate(xFrom, 5);
+			Piece actPiece = board.getPieceAt(actualCoordinate);
+		
+		if (actPiece != null) {
+			throw new InvalidPawnMoveException();
+			}
+		}
+		
+		if (yFrom == 1 && yTo == 3) {
+			Coordinate actualCoordinate = new Coordinate(xFrom, 2);
+			Piece actPiece = board.getPieceAt(actualCoordinate);
+		
+		if (actPiece != null) {
+			throw new InvalidPawnMoveException();
+			}
+		}
 	}
-
 }

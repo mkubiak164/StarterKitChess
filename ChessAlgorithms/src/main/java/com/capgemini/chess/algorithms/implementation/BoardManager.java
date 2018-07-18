@@ -247,15 +247,18 @@ public class BoardManager {
 		coordinateValidator.validateCoordinate(to);
 		
 		Piece piece = board.getPieceAt(from);
+		Piece pieceTo = board.getPieceAt(to);
 		Color nextMoveColor = calculateNextMoveColor();
-		fieldValidator.validateFieldFromEmptiness(piece, nextMoveColor ); 
+		fieldValidator.validateFieldFromEmptiness(piece, nextMoveColor); 
+		MoveType moveType = fieldValidator.validateFieldToEmptiness(pieceTo, nextMoveColor); 
 		
 		MoveValidator moveValidator = pieceMoveFactory.createPieceValidator(piece.getType(), board);
 		moveValidator.validatePieceMove(from, to);
 		moveValidator.validateIfSthIsOnTheWayTo(from, to);
 		
+		Move move = new Move(from, to, moveType, piece);
 		
-		return null;
+		return move;
 	}
 
 	private boolean isKingInCheck(Color kingColor) {

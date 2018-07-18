@@ -23,12 +23,12 @@ private Board board;
 		int xTo = to.getX();
 		int yTo = to.getY();
 		
-		int diffrenceXYFrom = Math.abs(Math.abs(xFrom) - Math.abs(yFrom));
-		int diffrenceXYTo = Math.abs(Math.abs(xTo) - Math.abs(yTo));
+		int diffrenceX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
+		int diffrenceY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));
 		
 		// jedno musi sie równać 2 , a drugie 1, zeby ruch był dostepny 
 		
-		if ((diffrenceXYFrom != 2 && diffrenceXYTo != 1) || (diffrenceXYFrom != 1 && diffrenceXYTo != 2)) {
+		if ((diffrenceX != 2 || diffrenceY != 1) && (diffrenceX != 1 || diffrenceY != 2)) {
 			throw new InvalidKnightMoveException();
 		}
 		

@@ -35,24 +35,6 @@ public class KingValidator implements MoveValidator {
 	@Override
 	public void validateIfSthIsOnTheWayTo(Coordinate from, Coordinate to) 
 			throws InvalidKingMoveException {
-		
-		int xFrom = from.getX();
-		int yFrom = from.getY();
-		int xTo = to.getX();
-		int yTo = to.getY();
-		
-			for (int i = (xFrom-1); i <= (xFrom+1); i++) {
-				for (int j = (yFrom-1); j <= (yFrom+1); j++) {
-					
-					Coordinate actualCoordinate = new Coordinate(i, j);
-					Piece fromPiece = board.getPieceAt(from);
-					Piece actPiece = board.getPieceAt(actualCoordinate);
-					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
-						throw new InvalidKingMoveException();
-				}
-			}
-		} 		
 	}
 }
 

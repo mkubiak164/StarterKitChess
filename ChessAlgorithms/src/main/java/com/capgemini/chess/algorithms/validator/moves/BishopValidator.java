@@ -50,7 +50,7 @@ public class BishopValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidBishopMoveException();
 					}
 				}
@@ -65,7 +65,7 @@ public class BishopValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidBishopMoveException();
 					}
 				}
@@ -80,7 +80,7 @@ public class BishopValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidBishopMoveException();
 					}
 				}
@@ -95,7 +95,7 @@ public class BishopValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidBishopMoveException();
 					}
 				}

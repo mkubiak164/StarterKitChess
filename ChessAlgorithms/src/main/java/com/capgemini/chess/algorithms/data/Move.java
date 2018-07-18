@@ -16,6 +16,17 @@ public class Move {
 	private MoveType type;
 	private Piece movedPiece;
 
+	public Move() {
+		
+	}
+	
+	public Move(Coordinate from, Coordinate to, MoveType type, Piece movedPiece) {
+		this.from = from;
+		this.to = to;
+		this.type = type;
+		this.movedPiece = movedPiece;
+	}
+	
 	public Coordinate getFrom() {
 		return from;
 	}

@@ -26,7 +26,7 @@ public class QueenValidator implements MoveValidator {
 		int absDiffrenceXYFrom = Math.abs(Math.abs(xFrom) - Math.abs(yFrom));
 		int absDiffrenceXYTo = Math.abs(Math.abs(xTo) - Math.abs(yTo));
 		
-		if (xFrom != xTo || yFrom != yTo || absDiffrenceXYFrom != absDiffrenceXYTo) {
+		if ((xFrom != xTo) && (yFrom != yTo) && (absDiffrenceXYFrom != absDiffrenceXYTo)) {
 			throw new InvalidMoveException();
 		}
 	}
@@ -51,7 +51,7 @@ public class QueenValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidQueenMoveException();
 					}
 				}
@@ -64,7 +64,7 @@ public class QueenValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidQueenMoveException();
 					}		
 				}
@@ -79,7 +79,7 @@ public class QueenValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidQueenMoveException();
 					}
 				}
@@ -91,7 +91,7 @@ public class QueenValidator implements MoveValidator {
 					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
-					if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+					if (actPiece != null) {
 						throw new InvalidQueenMoveException();
 					}			
 				}
@@ -107,7 +107,7 @@ public class QueenValidator implements MoveValidator {
 				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
-				if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+				if (actPiece != null) {
 					throw new InvalidQueenMoveException();
 				}
 			}
@@ -122,7 +122,7 @@ public class QueenValidator implements MoveValidator {
 				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
-				if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+				if (actPiece != null) {
 					throw new InvalidQueenMoveException();
 				}
 			}
@@ -137,7 +137,7 @@ public class QueenValidator implements MoveValidator {
 				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
-				if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+				if (actPiece != null) {
 					throw new InvalidQueenMoveException();
 				}
 			}
@@ -152,7 +152,7 @@ public class QueenValidator implements MoveValidator {
 				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
-				if (actPiece != null && actPiece.getColor() != fromPiece.getColor()) {
+				if (actPiece != null) {
 					throw new InvalidQueenMoveException();
 				}
 			}
