@@ -25,10 +25,10 @@ public class BishopValidator implements MoveValidator {
 		int xTo = to.getX();
 		int yTo = to.getY();
 		
-		int absDiffrenceXYFrom = Math.abs(Math.abs(xFrom) - Math.abs(yFrom));
-		int absDiffrenceXYTo = Math.abs(Math.abs(xTo) - Math.abs(yTo));
+		int absDiffrenceX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
+		int absDiffrenceY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));
 		
-		if (absDiffrenceXYFrom != absDiffrenceXYTo) {
+		if (absDiffrenceX != absDiffrenceY) {
 			throw new InvalidBishopMoveException();
 		}
 	}

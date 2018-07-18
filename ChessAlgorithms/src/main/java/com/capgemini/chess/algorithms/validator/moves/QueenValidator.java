@@ -35,8 +35,8 @@ public class QueenValidator implements MoveValidator {
 		
 		int xFrom = from.getX();
 		int yFrom = from.getY();
-		int xTo = from.getX();
-		int yTo = from.getY();
+		int xTo = to.getX();
+		int yTo = to.getY();
 		
 		int difX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
 		int difY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));

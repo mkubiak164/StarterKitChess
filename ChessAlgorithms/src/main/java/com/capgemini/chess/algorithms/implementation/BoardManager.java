@@ -15,6 +15,7 @@ import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveExcep
 import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckException;
 import com.capgemini.chess.algorithms.validator.CoordinateValidator;
 import com.capgemini.chess.algorithms.validator.FieldValidator;
+import com.capgemini.chess.algorithms.validator.KingInCheckValidator;
 import com.capgemini.chess.algorithms.validator.moves.MoveValidator;
 import com.capgemini.chess.algorithms.validator.moves.PieceMoveFactory;
 
@@ -30,9 +31,11 @@ public class BoardManager {
 	private CoordinateValidator coordinateValidator = new CoordinateValidator();
 	private FieldValidator fieldValidator = new FieldValidator();
 	private PieceMoveFactory pieceMoveFactory = new PieceMoveFactory();
+	private KingInCheckValidator kingInCheckValidator;
 	
 	public BoardManager() {
 		initBoard();
+		kingInCheckValidator = new KingInCheckValidator(board);
 	}
 
 	public BoardManager(List<Move> moves) {
@@ -40,10 +43,12 @@ public class BoardManager {
 		for (Move move : moves) {
 			addMove(move);
 		}
+		kingInCheckValidator = new KingInCheckValidator(board);
 	}
 
 	public BoardManager(Board board) {
 		this.board = board;
+		kingInCheckValidator = new KingInCheckValidator(board);
 	}
 
 	/**
@@ -256,6 +261,10 @@ public class BoardManager {
 		moveValidator.validatePieceMove(from, to);
 		moveValidator.validateIfSthIsOnTheWayTo(from, to);
 		
+		if (isKingInCheck(nextMoveColor)) {
+			throw new KingInCheckException();
+		}
+		
 		Move move = new Move(from, to, moveType, piece);
 		
 		return move;
@@ -266,16 +275,12 @@ public class BoardManager {
 		// TODO please add implementation here
 
 		if (kingColor == Color.WHITE) {
-		// isWhiteKingInCheck();
-			
-			
+			return kingInCheckValidator.isWhiteKingInCheck();
 		}
 		if (kingColor == Color.BLACK) {
-		//	isBlackKingInCheck();
+			return kingInCheckValidator.isBlackKingInCheck();
 		}
-		
 		return false;
-
 	}
 
 	private boolean isAnyMoveValid(Color nextMoveColor) {
