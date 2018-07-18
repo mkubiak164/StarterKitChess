@@ -3,10 +3,8 @@ package com.capgemini.chess.algorithms.validator.moves;
 import com.capgemini.chess.algorithms.data.Coordinate;
 import com.capgemini.chess.algorithms.data.enums.Piece;
 import com.capgemini.chess.algorithms.data.generated.Board;
-import com.capgemini.chess.algorithms.implementation.exceptions.InvalidBishopMoveException;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidQueenMoveException;
-import com.capgemini.chess.algorithms.implementation.exceptions.InvalidRookMoveException;
 
 public class QueenValidator implements MoveValidator {
 
@@ -48,7 +46,6 @@ public class QueenValidator implements MoveValidator {
 				for(int i=xFrom+1; i<xTo; i++) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, yFrom);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -60,8 +57,6 @@ public class QueenValidator implements MoveValidator {
 				for(int i=xFrom-1; i<=xTo; i--) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, yFrom);
-					
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -76,7 +71,6 @@ public class QueenValidator implements MoveValidator {
 				for(int i=yFrom+1; i<=yTo; i++) {
 
 					Coordinate actualCoordinate = new Coordinate(xFrom, i);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -88,7 +82,6 @@ public class QueenValidator implements MoveValidator {
 				for(int i=yFrom-1; i<=yTo; i--) {
 					
 					Coordinate actualCoordinate = new Coordinate(xFrom, i);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -104,7 +97,6 @@ public class QueenValidator implements MoveValidator {
 			for (int j = yFrom+1; j < yTo; j++) {
 				
 				Coordinate actualCoordinate = new Coordinate(i, j);
-				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
 				if (actPiece != null) {
@@ -119,7 +111,6 @@ public class QueenValidator implements MoveValidator {
 			for (int j = yFrom=1; j > yTo; j--) {
 				
 				Coordinate actualCoordinate = new Coordinate(i, j);
-				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
 				if (actPiece != null) {
@@ -134,7 +125,6 @@ public class QueenValidator implements MoveValidator {
 			for (int j = yFrom-1; j > yTo; j--) {
 				
 				Coordinate actualCoordinate = new Coordinate(i, j);
-				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
 				if (actPiece != null) {
@@ -149,7 +139,6 @@ public class QueenValidator implements MoveValidator {
 			for (int j = yFrom+1; j < yTo; j++) {
 				
 				Coordinate actualCoordinate = new Coordinate(i, j);
-				Piece fromPiece = board.getPieceAt(from);
 				Piece actPiece = board.getPieceAt(actualCoordinate);
 				
 				if (actPiece != null) {

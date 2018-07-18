@@ -47,7 +47,6 @@ public class BishopValidator implements MoveValidator {
 				for (int j = yFrom+1; j < yTo; j++) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, j);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -62,7 +61,6 @@ public class BishopValidator implements MoveValidator {
 				for (int j = yFrom=1; j > yTo; j--) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, j);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -77,7 +75,6 @@ public class BishopValidator implements MoveValidator {
 				for (int j = yFrom-1; j > yTo; j--) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, j);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -92,7 +89,6 @@ public class BishopValidator implements MoveValidator {
 				for (int j = yFrom+1; j < yTo; j++) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, j);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {

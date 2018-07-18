@@ -47,7 +47,6 @@ public class RookValidator implements MoveValidator {
 				for(int i=xFrom+1; i<xTo; i++) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, yFrom);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -59,8 +58,6 @@ public class RookValidator implements MoveValidator {
 				for(int i=xFrom-1; i<=xTo; i--) {
 					
 					Coordinate actualCoordinate = new Coordinate(i, yFrom);
-					
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -75,7 +72,6 @@ public class RookValidator implements MoveValidator {
 				for(int i=yFrom+1; i<=yTo; i++) {
 
 					Coordinate actualCoordinate = new Coordinate(xFrom, i);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -87,7 +83,6 @@ public class RookValidator implements MoveValidator {
 				for(int i=yFrom-1; i<=yTo; i--) {
 					
 					Coordinate actualCoordinate = new Coordinate(xFrom, i);
-					Piece fromPiece = board.getPieceAt(from);
 					Piece actPiece = board.getPieceAt(actualCoordinate);
 					
 					if (actPiece != null) {
@@ -97,7 +92,4 @@ public class RookValidator implements MoveValidator {
 			}
 		}
 	}
-	
-	
-
 }

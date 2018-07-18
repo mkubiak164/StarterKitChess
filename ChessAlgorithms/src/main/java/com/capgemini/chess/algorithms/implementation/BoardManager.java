@@ -264,12 +264,25 @@ public class BoardManager {
 	private boolean isKingInCheck(Color kingColor) {
 
 		// TODO please add implementation here
+
+		if (kingColor == Color.WHITE) {
+		// isWhiteKingInCheck();
+			
+			
+		}
+		if (kingColor == Color.BLACK) {
+		//	isBlackKingInCheck();
+		}
+		
 		return false;
+
 	}
 
 	private boolean isAnyMoveValid(Color nextMoveColor) {
 
 		// TODO please add implementation here
+		
+		
 
 		return false;
 	}

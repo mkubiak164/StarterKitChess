@@ -12,7 +12,6 @@ public class PawnValidator implements MoveValidator {
 	
 	private Board board;
 	
-	
 	public PawnValidator(Board board) {
 		this.board = board;
 	}
@@ -28,12 +27,11 @@ public class PawnValidator implements MoveValidator {
 		
 		int difX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
 		int difY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));
-
 		
 		Piece fromPiece = board.getPieceAt(from);
 		Color color = fromPiece.getColor();
 		
-		if (color == WHITE) {
+		if (color == Color.WHITE) {
 			
 			if (yFrom != 1 && difY > 1) {
 				throw new InvalidPawnMoveException();
@@ -49,7 +47,7 @@ public class PawnValidator implements MoveValidator {
 			}
 		}
 		
-		if (color == BLACK) {
+		if (color == Color.BLACK) {
 			
 			if (yFrom != 6 && difY > 1) {
 				throw new InvalidPawnMoveException();
@@ -64,7 +62,6 @@ public class PawnValidator implements MoveValidator {
 				throw new InvalidPawnMoveException();
 			}
 		}
-		
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package com.capgemini.chess.algorithms.validator.moves;
 
 import com.capgemini.chess.algorithms.data.Coordinate;
-import com.capgemini.chess.algorithms.data.enums.Piece;
 import com.capgemini.chess.algorithms.data.generated.Board;
 import com.capgemini.chess.algorithms.implementation.exceptions.*;
 

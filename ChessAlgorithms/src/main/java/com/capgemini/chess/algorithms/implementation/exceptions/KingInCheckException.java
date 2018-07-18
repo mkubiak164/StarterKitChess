@@ -14,4 +14,8 @@ public class KingInCheckException extends InvalidMoveException {
 		super("King must not be checked!");
 	}
 
+	public KingInCheckException(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 }
