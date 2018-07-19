@@ -2,7 +2,6 @@ package com.capgemini.chess.algorithms.validator.moves;
 
 import com.capgemini.chess.algorithms.data.Coordinate;
 import com.capgemini.chess.algorithms.data.Move;
-import com.capgemini.chess.algorithms.data.enums.BoardState;
 import com.capgemini.chess.algorithms.data.enums.Color;
 import com.capgemini.chess.algorithms.data.enums.MoveType;
 import com.capgemini.chess.algorithms.data.enums.Piece;
@@ -66,5 +65,4 @@ public class PieceMoveValidator {
 		}
 		return false;
 	}
-
 }

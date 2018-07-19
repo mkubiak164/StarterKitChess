@@ -13,12 +13,8 @@ import com.capgemini.chess.algorithms.data.enums.PieceType;
 import com.capgemini.chess.algorithms.data.generated.Board;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
 import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckException;
-import com.capgemini.chess.algorithms.validator.CoordinateValidator;
-import com.capgemini.chess.algorithms.validator.FieldValidator;
 import com.capgemini.chess.algorithms.validator.KingInCheckValidator;
 import com.capgemini.chess.algorithms.validator.moves.AnyMoveValidator;
-import com.capgemini.chess.algorithms.validator.moves.MoveValidator;
-import com.capgemini.chess.algorithms.validator.moves.PieceMoveFactory;
 import com.capgemini.chess.algorithms.validator.moves.PieceMoveValidator;
 
 /**
@@ -266,9 +262,7 @@ public class BoardManager {
 	private boolean isAnyMoveValid(Color nextMoveColor) {
 
 		AnyMoveValidator anyMoveValidator = new AnyMoveValidator(board);
-		
 		return anyMoveValidator.validateAnyMoves(nextMoveColor);
-
 	}
 
 	private Color calculateNextMoveColor() {
@@ -289,7 +283,6 @@ public class BoardManager {
 			}
 			counter++;
 		}
-
 		return lastNonAttackMoveIndex;
 	}
 

@@ -1,14 +1,11 @@
 package com.capgemini.chess.algorithms.validator;
 
-import com.capgemini.chess.algorithms.data.Coordinate;
 import com.capgemini.chess.algorithms.data.enums.Color;
 import com.capgemini.chess.algorithms.data.enums.MoveType;
 import com.capgemini.chess.algorithms.data.enums.Piece;
-import com.capgemini.chess.algorithms.data.generated.Board;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
 
 public class FieldValidator {
-	
 	
 	public void validateFieldFromEmptiness(Piece piece, Color nextMoveColor)
 			throws InvalidMoveException {
@@ -26,7 +23,6 @@ public class FieldValidator {
 		}
 	}
 	
-	
 	public MoveType validateFieldToEmptiness(Piece piece, Color actualColor)
 			throws InvalidMoveException {
 				
@@ -41,8 +37,5 @@ public class FieldValidator {
 		} else {
 			return MoveType.CAPTURE;
 		}
-
 	}
-
-	
 }

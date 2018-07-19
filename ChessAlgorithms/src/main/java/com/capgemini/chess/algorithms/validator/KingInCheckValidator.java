@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.capgemini.chess.algorithms.data.Coordinate;
-import com.capgemini.chess.algorithms.data.Move;
-import com.capgemini.chess.algorithms.data.enums.BoardState;
 import com.capgemini.chess.algorithms.data.enums.Color;
-import com.capgemini.chess.algorithms.data.enums.MoveType;
 import com.capgemini.chess.algorithms.data.enums.Piece;
 import com.capgemini.chess.algorithms.data.enums.PieceType;
 import com.capgemini.chess.algorithms.data.generated.Board;
@@ -26,11 +23,7 @@ public class KingInCheckValidator {
 	private int whiteKingY;
 	private int blackKingX;
 	private int blackKingY;
-
-	private boolean isInCheck;
 	
-	
-
 	public KingInCheckValidator(Board board) {
 		this.board = board;
 	}
@@ -44,12 +37,10 @@ public class KingInCheckValidator {
 
 				if (actPiece != null && actPiece.getType() == PieceType.KING) {
 					if (actPiece.getColor() == Color.WHITE) {
-						Piece whiteKing = actPiece;
 						whiteKingX = i;
 						whiteKingY = j;
 					}
 					if (actPiece.getColor() == Color.BLACK) {
-						Piece blackKing = actPiece;
 						blackKingX = i;
 						blackKingY = j;
 					}
