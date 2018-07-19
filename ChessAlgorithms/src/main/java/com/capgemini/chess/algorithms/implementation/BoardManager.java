@@ -30,9 +30,6 @@ import com.capgemini.chess.algorithms.validator.moves.PieceMoveValidator;
 public class BoardManager {
 
 	private Board board = new Board();
-	private CoordinateValidator coordinateValidator = new CoordinateValidator();
-	private FieldValidator fieldValidator = new FieldValidator();
-	private PieceMoveFactory pieceMoveFactory = new PieceMoveFactory();
 	private KingInCheckValidator kingInCheckValidator;
 	
 	public BoardManager() {
@@ -79,6 +76,7 @@ public class BoardManager {
 		Move move = validateMove(from, to);
 
 		addMove(move);
+
 
 		return move;
 	}
@@ -247,7 +245,7 @@ public class BoardManager {
 
 	private Move validateMove(Coordinate from, Coordinate to) 
 			throws InvalidMoveException, KingInCheckException {
-
+		
 		Color nextMoveColor = calculateNextMoveColor();
 		PieceMoveValidator pieceMoveValidator = new PieceMoveValidator(board);
 		
@@ -267,7 +265,6 @@ public class BoardManager {
 
 	private boolean isAnyMoveValid(Color nextMoveColor) {
 
-		// TODO please add implementation here
 		AnyMoveValidator anyMoveValidator = new AnyMoveValidator(board);
 		
 		return anyMoveValidator.validateAnyMoves(nextMoveColor);

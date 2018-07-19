@@ -21,10 +21,10 @@ public class QueenValidator implements MoveValidator {
 		int xTo = to.getX();
 		int yTo = to.getY();
 		
-		int absDiffrenceXYFrom = Math.abs(Math.abs(xFrom) - Math.abs(yFrom));
-		int absDiffrenceXYTo = Math.abs(Math.abs(xTo) - Math.abs(yTo));
+		int absDiffrenceX = Math.abs(Math.abs(xFrom) - Math.abs(xTo));
+		int absDiffrenceY = Math.abs(Math.abs(yFrom) - Math.abs(yTo));
 		
-		if ((xFrom != xTo) && (yFrom != yTo) && (absDiffrenceXYFrom != absDiffrenceXYTo)) {
+		if ((xFrom != xTo) && (yFrom != yTo) && (absDiffrenceX != absDiffrenceY)) {
 			throw new InvalidMoveException();
 		}
 	}

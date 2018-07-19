@@ -7,6 +7,7 @@ import com.capgemini.chess.algorithms.data.enums.Color;
 import com.capgemini.chess.algorithms.data.enums.MoveType;
 import com.capgemini.chess.algorithms.data.enums.Piece;
 import com.capgemini.chess.algorithms.data.generated.Board;
+import com.capgemini.chess.algorithms.implementation.BoardManager;
 import com.capgemini.chess.algorithms.implementation.exceptions.InvalidMoveException;
 import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckException;
 import com.capgemini.chess.algorithms.validator.CoordinateValidator;
@@ -20,6 +21,7 @@ public class PieceMoveValidator {
 	private PieceMoveFactory pieceMoveFactory = new PieceMoveFactory();
 	private KingInCheckValidator kingInCheckValidator; 
 	private Board board;
+	BoardManager boardManager = new BoardManager();
 	
 	public PieceMoveValidator(Board board) {
 		this.board = board;
@@ -34,7 +36,6 @@ public class PieceMoveValidator {
 		
 		Piece piece = board.getPieceAt(from);
 		Piece pieceTo = board.getPieceAt(to);
-//		Color nextMoveColor = calculateNextMoveColor();
 		fieldValidator.validateFieldFromEmptiness(piece, nextMoveColor); 
 		MoveType moveType = fieldValidator.validateFieldToEmptiness(pieceTo, nextMoveColor); 
 		
@@ -52,9 +53,6 @@ public class PieceMoveValidator {
 		}
 		
 		Move move = new Move(from, to, moveType, piece);
-		
-	
-		
 		return move;
 	}
 	

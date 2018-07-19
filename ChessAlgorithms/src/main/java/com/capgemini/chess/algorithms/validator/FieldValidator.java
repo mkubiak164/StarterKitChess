@@ -24,7 +24,6 @@ public class FieldValidator {
 		if (actualColor != pieceColor) {
 			throw new InvalidMoveException();
 		}
-		
 	}
 	
 	

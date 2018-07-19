@@ -21,13 +21,15 @@ public class KingInCheckValidator {
 
 	List<Coordinate> whitePieces = new ArrayList<>();
 	List<Coordinate> blackPieces = new ArrayList<>();
-	// int[][] whitePieces = new int[15][2];
-	// int[][] blackPieces = new int[15][2];
 	private PieceMoveFactory pieceMoveFactory = new PieceMoveFactory();
 	private int whiteKingX;
 	private int whiteKingY;
 	private int blackKingX;
 	private int blackKingY;
+
+	private boolean isInCheck;
+	
+	
 
 	public KingInCheckValidator(Board board) {
 		this.board = board;
@@ -70,11 +72,12 @@ public class KingInCheckValidator {
 
 		Coordinate coordinateTo = new Coordinate(whiteKingX, whiteKingY);
 
+		
 		for (int k = 0; k < blackPieces.size(); k++) {
 		
 			Coordinate coordinateFrom = blackPieces.get(k);
 			Piece fromPiece = board.getPieceAt(coordinateFrom);
-
+			
 			try {
 				MoveValidator moveValidator = pieceMoveFactory.createPieceValidator(fromPiece.getType(), board);
 				moveValidator.validatePieceMove(coordinateFrom, coordinateTo);
@@ -82,7 +85,8 @@ public class KingInCheckValidator {
 			} catch (InvalidMoveException ex) {
 				continue;
 			}
-			return true;
+		return true;
+		
 		}
 		return false;
 	}

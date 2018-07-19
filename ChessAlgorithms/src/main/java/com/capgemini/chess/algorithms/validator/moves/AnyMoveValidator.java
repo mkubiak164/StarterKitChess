@@ -54,6 +54,8 @@ public class AnyMoveValidator {
 	
 	public boolean validateAnyMoves(Color color) {
 		
+		whereArePieces();
+		
 		if(color == Color.WHITE) {
 			for(Coordinate from : whitePieces) {
 				List<Coordinate> moves = generateMoves(from); 
