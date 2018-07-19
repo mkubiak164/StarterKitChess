@@ -12,7 +12,6 @@ public class PieceMoveFactory {
 		
 		case BISHOP: 
 			return new BishopValidator(board);
-
 			
 		case KING:
 			return new KingValidator(board);

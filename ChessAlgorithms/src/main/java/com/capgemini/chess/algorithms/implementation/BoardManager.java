@@ -16,8 +16,10 @@ import com.capgemini.chess.algorithms.implementation.exceptions.KingInCheckExcep
 import com.capgemini.chess.algorithms.validator.CoordinateValidator;
 import com.capgemini.chess.algorithms.validator.FieldValidator;
 import com.capgemini.chess.algorithms.validator.KingInCheckValidator;
+import com.capgemini.chess.algorithms.validator.moves.AnyMoveValidator;
 import com.capgemini.chess.algorithms.validator.moves.MoveValidator;
 import com.capgemini.chess.algorithms.validator.moves.PieceMoveFactory;
+import com.capgemini.chess.algorithms.validator.moves.PieceMoveValidator;
 
 /**
  * Class for managing of basic operations on the Chess Board.
@@ -246,33 +248,13 @@ public class BoardManager {
 	private Move validateMove(Coordinate from, Coordinate to) 
 			throws InvalidMoveException, KingInCheckException {
 
-		// TODO please add implementation here
-		
-		coordinateValidator.validateCoordinate(from);
-		coordinateValidator.validateCoordinate(to);
-		
-		Piece piece = board.getPieceAt(from);
-		Piece pieceTo = board.getPieceAt(to);
 		Color nextMoveColor = calculateNextMoveColor();
-		fieldValidator.validateFieldFromEmptiness(piece, nextMoveColor); 
-		MoveType moveType = fieldValidator.validateFieldToEmptiness(pieceTo, nextMoveColor); 
+		PieceMoveValidator pieceMoveValidator = new PieceMoveValidator(board);
 		
-		MoveValidator moveValidator = pieceMoveFactory.createPieceValidator(piece.getType(), board);
-		moveValidator.validatePieceMove(from, to);
-		moveValidator.validateIfSthIsOnTheWayTo(from, to);
-		
-		if (isKingInCheck(nextMoveColor)) {
-			throw new KingInCheckException();
-		}
-		
-		Move move = new Move(from, to, moveType, piece);
-		
-		return move;
+		return pieceMoveValidator.validateMove(from, to, nextMoveColor);
 	}
 
 	private boolean isKingInCheck(Color kingColor) {
-
-		// TODO please add implementation here
 
 		if (kingColor == Color.WHITE) {
 			return kingInCheckValidator.isWhiteKingInCheck();
@@ -286,10 +268,10 @@ public class BoardManager {
 	private boolean isAnyMoveValid(Color nextMoveColor) {
 
 		// TODO please add implementation here
+		AnyMoveValidator anyMoveValidator = new AnyMoveValidator(board);
 		
-		
+		return anyMoveValidator.validateAnyMoves(nextMoveColor);
 
-		return false;
 	}
 
 	private Color calculateNextMoveColor() {
