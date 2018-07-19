@@ -838,6 +838,75 @@ public class BoardManagerTest {
 		assertFalse(areFiftyMoves);
 	}
 	
+	
+	@Test
+	public void shouldShowThatAnyMovesAreValid() {
+		//given
+		
+		Board board = new Board();
+		BoardManager boardManager = new BoardManager(board);
+		board.getMoveHistory().add(createDummyMove(board));
+		boardManager.getBoard().setPieceAt(Piece.WHITE_KING, new Coordinate(0,2));
+		boardManager.getBoard().setPieceAt(Piece.WHITE_ROOK, new Coordinate(2,4));
+		boardManager.getBoard().setPieceAt(Piece.WHITE_KNIGHT, new Coordinate(4,3));
+		boardManager.getBoard().setPieceAt(Piece.BLACK_BISHOP, new Coordinate(3,5));
+		boardManager.getBoard().setPieceAt(Piece.BLACK_KING, new Coordinate(7,7));
+		
+		// when
+		Move move = null;
+		boolean exceptionThrown = false;
+		try {
+			move = boardManager.performMove(new Coordinate(3,5), new Coordinate(2,4));
+		} catch (InvalidMoveException e) {
+			exceptionThrown = true;
+		}
+		
+		//then
+		assertTrue(move != null);
+		assertTrue(move.getType() == MoveType.CAPTURE);
+		assertFalse(exceptionThrown);
+	
+
+		
+	}
+	
+	@Test
+	public void anyMoveValidForKnight() {
+		
+		//given
+		Board board = new Board();
+		BoardManager boardManager = new BoardManager(board);
+	//	board.getMoveHistory().add(createDummyMove(board));
+		boardManager.getBoard().setPieceAt(Piece.WHITE_KING, new Coordinate(7,0));
+		boardManager.getBoard().setPieceAt(Piece.BLACK_QUEEN, new Coordinate(1,3));
+		boardManager.getBoard().setPieceAt(Piece.WHITE_KNIGHT, new Coordinate(2,0));
+		
+		// when
+			boardManager.updateBoardState();
+				
+				//then
+		assertTrue(board.getState() == BoardState.REGULAR);
+	}
+	
+	@Test
+	public void anyMoveValidForBishop() {
+		
+		//given
+		Board board = new Board();
+		BoardManager boardManager = new BoardManager(board);
+	
+		boardManager.getBoard().setPieceAt(Piece.WHITE_KING, new Coordinate(7,0));
+		boardManager.getBoard().setPieceAt(Piece.BLACK_QUEEN, new Coordinate(1,3));
+		boardManager.getBoard().setPieceAt(Piece.WHITE_BISHOP, new Coordinate(2,0));
+		
+		// when
+			boardManager.updateBoardState();
+				
+				//then
+		assertTrue(board.getState() == BoardState.REGULAR);
+	}
+	
+	
 	private Move createDummyMove(Board board) {
 		
 		Move move = new Move();
